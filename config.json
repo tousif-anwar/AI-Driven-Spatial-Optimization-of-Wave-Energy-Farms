@@ -1,0 +1,80 @@
+{
+  "optimization": {
+    "ga_population_size": 20,
+    "ga_generations": 30,
+    "ga_crossover_prob": 0.7,
+    "ga_mutation_prob": 0.2,
+    "ga_tournament_size": 3,
+    "bo_n_calls": 50,
+    "bo_n_initial": 10,
+    "bo_acquisition_function": "EI",
+    "x_min": 0.0,
+    "x_max": 1500.0,
+    "y_min": 0.0,
+    "y_max": 1400.0,
+    "min_distance": 50.0,
+    "power_weight": 0.6,
+    "economics_weight": 0.4
+  },
+  "economics": {
+    "wec_unit_cost": 2000000,
+    "cable_cost_per_meter": 1500,
+    "installation_cost_per_wec": 500000,
+    "annual_maintenance_rate": 0.05,
+    "grid_connection_cost": 10000000,
+    "electricity_price": 0.12,
+    "capacity_factor": 0.35,
+    "power_transmission_efficiency": 0.95,
+    "discount_rate": 0.08,
+    "project_lifetime": 25,
+    "hours_per_year": 8760
+  },
+  "model": {
+    "xgb_n_estimators": 100,
+    "xgb_max_depth": 6,
+    "xgb_learning_rate": 0.1,
+    "xgb_subsample": 0.8,
+    "rf_n_estimators": 100,
+    "rf_max_depth": 10,
+    "rf_min_samples_split": 5,
+    "rf_min_samples_leaf": 2,
+    "nn_hidden_layers": [
+      100,
+      50,
+      25
+    ],
+    "nn_activation": "relu",
+    "nn_solver": "adam",
+    "nn_alpha": 0.001,
+    "nn_max_iter": 500,
+    "test_size": 0.2,
+    "random_state": 42,
+    "cv_folds": 5
+  },
+  "visualization": {
+    "figure_width": 12,
+    "figure_height": 8,
+    "marker_size": 100,
+    "line_width": 2,
+    "alpha": 0.7,
+    "primary_color": "#1f77b4",
+    "secondary_color": "#ff7f0e",
+    "success_color": "#2ca02c",
+    "warning_color": "#d62728",
+    "camera_eye": {
+      "x": 1.5,
+      "y": 1.5,
+      "z": 1.2
+    }
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false,
+    "max_requests_per_minute": 100,
+    "cache_timeout": 3600,
+    "default_n_wecs": 49,
+    "default_objective": "power",
+    "default_iterations": 10
+  }
+}
