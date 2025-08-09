@@ -65,10 +65,13 @@ class WECEconomicModel:
         total_cable_length = 0
         
         # Minimum spanning tree approximation
-        # For simplicity, use average distance * n_wecs as approximation
+        # Use average pairwise distance scaled by (n_wecs - 1) to represent
+        # the number of connections in a spanning tree. Previously this used
+        # ``n_wecs`` which effectively assumed an extra cable run and
+        # overestimated costs, especially for small farms.
         if len(distances) > 0:
             avg_distance = np.mean(distances)
-            total_cable_length = avg_distance * n_wecs * 0.8  # 80% efficiency factor
+            total_cable_length = avg_distance * max(n_wecs - 1, 0) * 0.8  # 80% efficiency factor
         
         # Add connection to shore (distance to centroid)
         centroid = np.mean(positions, axis=0)
